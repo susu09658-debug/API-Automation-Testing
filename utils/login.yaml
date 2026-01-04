@@ -1,0 +1,14 @@
+- BaseInfo:
+    url: http://127.0.0.1:8787/dar/user/login
+    method: post
+    header:
+      Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+  TestCase:
+    - CaseName: 正常登录  # 第1个用例（列表元素1）
+      data:
+        user_name: test01
+        passwd: admin123
+    - CaseName: 失败登录  # 第2个用例（列表元素2）
+      data:
+        user_name: test01
+        passwd:
