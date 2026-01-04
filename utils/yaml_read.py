@@ -24,31 +24,27 @@ class YamlUtil:
     def __init__(self, yaml_path):
         self.yaml_path = yaml_path
         self.read_yaml = ReadYaml()
+        self.case_data = self.read_yaml.get_yaml_file(self.yaml_path)
 
     def get_case_url(self):
-        case_data = self.read_yaml.get_yaml_file(self.yaml_path)
-        case_url = case_data[0][0].get('url')
+        case_url = self.case_data[0][0].get('url')
         return case_url
 
     def get_case_method(self):
-        case_data = self.read_yaml.get_yaml_file(self.yaml_path)
-        case_method = case_data[0][0].get('method')
+        case_method = self.case_data[0][0].get('method')
         return case_method
 
     def get_case_header(self):
-        case_data = self.read_yaml.get_yaml_file(self.yaml_path)
-        case_header = case_data[0][0].get('header')
+        case_header = self.case_data[0][0].get('header')
         return case_header
 
     def get_case_name(self, index):
-        case_data = self.read_yaml.get_yaml_file(self.yaml_path)
-        case_name = case_data[index][1].get('CaseName')
+        case_name = self.case_data[index][1].get('CaseName')
         return case_name
 
     def get_case_body(self, index):
         body_info = {}
-        case_data = self.read_yaml.get_yaml_file(self.yaml_path)
-        case_body = case_data[index][1]
+        case_body = self.case_data[index][1]
         body_types = ['data', 'json', 'params']
         for body_type in body_types:
             if body_type in case_body:
